@@ -1,11 +1,13 @@
-version: "3.9"
 services:
-  langgraph-app:
+  log-analyzer:
     build: .
     ports:
       - "8501:8501"
     volumes:
-      - ./logs:/app/logs
+      - ./app/test_data/logs:/app/app/test_data/logs
     env_file:
       - .env
+    environment:
+      - PYTHONPATH=/app
+      - MODE=gui  # or cli
     restart: unless-stopped
