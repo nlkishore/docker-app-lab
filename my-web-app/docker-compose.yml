@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   web:
     build:
@@ -6,6 +7,18 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
+      - .:/app      # Sync host files
+      - /app/node_modules  # Avoid overwriting container deps
+    command: npm run dev   # Use nodemon for auto-restart
     environment:
-      - PORT=3000
+      - NODE_ENV=development
+
+  web_prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command: node src/app.js
+    environment:
+      - NODE_ENV=production

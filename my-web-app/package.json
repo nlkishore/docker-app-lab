@@ -10,9 +10,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-   "dev": "nodemon src/app.js",
-   "test": "python -m unittest discover -s tests"
-   
+    "dev": "nodemon src/app.js",
+    "test": "python -m unittest discover -s tests"
   },
   "keywords": [],
   "author": "",
